@@ -30,12 +30,10 @@ if not os.path.exists(out_dir):
 
 
 # ask user for subject ids to process 
-subjects = raw_input('subject id (enter "all" to process all subs): ')
+subjects = raw_input('subject id(s) to process: ')
 print '\nyou entered: '+subjects+'\n'
 
 subjects=subjects.split(' ')
-
-## note: you could include a call to load in a complete subject list here if desired, 
 
 for subject in subjects:
 

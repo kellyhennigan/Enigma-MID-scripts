@@ -36,7 +36,7 @@ dataDir = [mainDir '/data'];
 path(path,genpath(scriptsDir)); % add scripts dir to matlab search path
 
 
-subjects = {'subj002','subj003'};
+subjects = getMIDSubjects();
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% FMRI data %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

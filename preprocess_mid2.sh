@@ -18,6 +18,7 @@
 # output files are: 
 
 	# pp_mid_tlrc.nii.gz - pre-processed mid data, both runs concatenated, in group (tlrc) space
+	# pp_mid_tlrc.nii.gz - pre-processed mid data, both runs concatenated, in subject's native space 
 	# mid_enorm.1D - vector containing an estimate of movement (euclidean norm) from each volume to the next
 	# mid_censor.1D - vector containing 0 for volumes with bad movement, otherwise 1
 	# mid_vr.1D - matrix with the following columns: 
