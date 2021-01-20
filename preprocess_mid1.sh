@@ -55,7 +55,8 @@
 
 
 # define main directory (this should )
-mainDir=path/to/maindirectory
+#mainDir=path/to/maindirectory
+mainDir=/Volumes/pegasus/enigma_mid
 dataDir=$mainDir/data 
 
 
