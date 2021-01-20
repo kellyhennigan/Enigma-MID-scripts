@@ -36,7 +36,7 @@ endif
 #-#-#-#-#-#-#-#-#-#-#-		Cycle through subjects:		-#-#-#-#-#-#-#-#-#-#-#
 
 
-foreach subject ( subj002 subj003 )
+foreach subject ( aa151010 )
 
     cd ${DATADIR}/${subject}
     echo processing ${subject} 
