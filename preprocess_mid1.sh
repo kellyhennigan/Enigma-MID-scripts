@@ -18,10 +18,13 @@
 	
 	# mainDir/data/subjid/func_proc
 
-# important output files are: 
+# output files are: 
 
+	# t1_ns.nii.gz - subject's skullstripped anatomical data in native space
 	# t1_tlrc.nii.gz - subject's anatomical data in tlrc space
-	# vol1_mid_tlrc.nii.gz - the first volume of the subject's mid data aligned in tlrc space
+	# vol1_mid_ns.nii.gz - 1st volume of 1st MID run, skull-stripped
+	# vol1_mid_ns_al.nii.gz - " ", aligned to t1 in native space (can be useful for checking anat-func coreg)
+	# vol1_mid_tlrc.nii.gz - " ", aligned in tlrc space
 	# xfs - subdirectory within func_proc folder that contains coregistration transforms
 
 ###########################################
@@ -134,11 +137,13 @@ do
 
 	# clean files
 	rm vol1_mid_ns_tlrc_al+tlrc*
+	rm vol1_mid_ns_al+orig*
 	mv t1_ns_al_mat.aff12.1D xfs/t12mid_xform; 
 	mv vol1_mid_ns_al_mat.aff12.1D xfs/mid2t1_xform; 
 	mv vol1_mid_ns_al_tlrc_mat.aff12.1D xfs/mid2tlrc_xform; 
 	rm vol1_mid_ns_al_reg_mat.aff12.1D; 
-	rm vol1_mid_ns_al+orig*
+	rm t1_ns_tlrc.maskwarp.Xat.1D;
+	
 
 
 done # subject loop

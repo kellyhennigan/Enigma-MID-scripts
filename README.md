@@ -61,7 +61,7 @@ Use that command to confirm that the mid1 nifti file contains 262 volumes and th
 Behavioral data should be here: 
 * data/[subjid]/behavior/mid_matrix_wEnd.csv 	# stim timing file
 
-Open up that file and confirm that there are 549 rows, including the header file. Because we use a "TR-locked" design, meaning that our trial timing is locked to the timing of fmri data acquisition, each row in the stim file will correspond to a volume of fmri data after we omit the first 6 volumes from each scan and concatenate the scans together. 
+There should be 549 rows, inclusive of the header row. Because we use a "TR-locked" design, meaning that our trial timing is locked to the timing of fmri data acquisition, each row in the stim file will correspond to a volume of fmri data after we omit the first 6 volumes from each scan and concatenate the scans together (i.e., there will be 548 volumes of pre-processed fmri data). 
 
 
 
@@ -79,11 +79,11 @@ this script does the following using AFNI commands:
 #### output 
 this should create the directory, **data/[subjid]/func_proc**, which should contain: 		
 * t1_ns.nii.gz 				# subject's t1 with no skull in native space
-* t1_tlrc_afni.nii.gz			# " " in standard (tlrc) space
+* t1_tlrc.nii.gz			# " " in standard (tlrc) space
 * vol1_mid_ns.nii.gz 		# 1st vol of fmri data with no skull in native space
 * vol1_mid_ns_al.nii.gz		# " " aligned to t1 in native space
-* vol1_mid_tlrc_afni.nii.gz		# " " in standard (tlrc) space
-* xfs 						# sub-directory containing all estimated transforms
+* vol1_mid_tlrc.nii.gz		# " " in standard (tlrc) space
+* xfs 						# sub-directory containing all coregistration transforms
 
 
 
@@ -163,7 +163,7 @@ You might also want to plot some ROI timeseries to make sure they look okay (e.g
 
 
 ### Get stimulus onset times and make regressors
-From terminal, cd to your scripts directory and run: 
+From terminal, cd to your scripts directory, enter desired subject IDs, and run: 
 ```
 ./regs_mid.csh
 ```
@@ -197,7 +197,7 @@ saves out the following files to directory **data/results_mid**:
 * subjid_glm.xmat.1D 	# file containing the 
 To check out glm results, open these files in afni as an overlay (with, e.g., TT_N27.nii as underlay). You can also get info about these files using afni's 3dinfo command, e.g., from the terminal command line, `3dinfo -verb subjid_glm_B+tlrc`.
 
-Once ou have those files, cd to the **results_mid** directory, and open the afni viewer (type "afni") in the terminal; load the anatomical template, TT_N27.nii as the underlay (you may need to add a copy of that nifti file into the results_mid directory), and load a "subjid_glm+tlrc" file as the overlay. You can change which stat map you are viewing as the overlay by clicking on the "Olay" dropdown menu within Afni's viewer window. Poke around. Here's what subj002's gain vs no-gain anticipation t-statistic map looks like: 
+Once you have those files, cd to the **results_mid** directory, and open the afni viewer (type "afni") in the terminal; load the anatomical template, TT_N27.nii as the underlay (you may need to add a copy of that nifti file into the results_mid directory), and load a "subjid_glm+tlrc" file as the overlay. You can change which stat map you are viewing as the overlay by clicking on the "Olay" dropdown menu within Afni's viewer window. Poke around. Here's what subj002's gain vs no-gain anticipation t-statistic map looks like: 
 
 <p align="center">
   <img width="332" height="302" src="https://github.com/kellyhennigan/MID_processing_example/blob/master/subj002_gvn_y12.jpg">
@@ -225,12 +225,22 @@ Here's an example timecourse plot showing gain 0, gain 1, and gain 5 trials in t
   <img width="665" height="500" src="https://github.com/kellyhennigan/MID_processing_example/blob/master/nacc_desai_gain_trials_controls.png">
 </p>
 
-You can also plot an ROI timecourse for a given condition by subject with this script: 
+You can also plot an VOI timecourse for a given condition by subject with this script: 
 ```
 plotRoiTimeCourses_subject_script
 ```
 This is mainly for troubleshooting purposes; it helps to see if the timecourses look funky for a particular subject. 
 
+
+### Group level brain maps
+Once you have GLM estimates for every subject in the sample, you can generate group brain maps. Here's an example command for doing that: 
+```
+3dttest++ 
+```
+to save out a brain map for gain versus no gain anticipation. 
+
+#### output 
+Saves out group maps to the directory, 'results_mid'. 
 
 
 

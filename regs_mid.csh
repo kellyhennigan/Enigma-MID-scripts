@@ -52,7 +52,7 @@ foreach subject ( aa151010 )
 #-#-#-#-#-#-#-#-#-#-#-		Run makeVec on model file:		-#-#-#-#-#-#-#-#-#-#-#
 
 	
-	python ${SCRIPTSDIR}/makeVec.py ${SCRIPTSDIR}/${REGFILE}
+	python2.7 ${SCRIPTSDIR}/makeVec.py ${SCRIPTSDIR}/${REGFILE}
 	
 
 

@@ -11,6 +11,7 @@
 	# mainDir/data/subjid/raw
 
 # assumes raw files are called: 
+
 	# t1_raw.nii.gz 				# subject's raw t1-weighted volume
 	# mid1.nii.gz & mid2.nii.gz 	# subject's raw fMRI data from 2 MID runs
 
@@ -75,7 +76,7 @@ do
 	for run in $runs
 	do
 
-		echo WORKING ON RUN $RUN
+		echo WORKING ON RUN $run
 
 		# drop the first 6 volumes to allow longitudinal magentization (t1) to reach steady state
 		3dTcat -output mid$run.nii.gz $inDir/mid$run.nii.gz[6..$]
