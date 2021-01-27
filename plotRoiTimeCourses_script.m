@@ -56,7 +56,6 @@ xt = t; %  xticks on the plotted x axis
 plotStims = {'gain0 gain1 gain5';
     'gainwin gainmiss';
     'loss0 loss1 loss5';
-    'loss5-loss0';
     'losswin lossmiss';
     'gain5-gain0 loss5-loss0'};
 
@@ -77,6 +76,10 @@ plotStimStrs = {'gain trials';
 %% run it - you shouldnt have to edit past this line 
 
 
+if ~isequal(numel(plotStims),numel(plotStimStrs))
+    error('plotStims and plotStimStrs need to have the same # of entries')
+end
+    
 nFigs=size(plotStims,1);
 
 % get ROI time courses
