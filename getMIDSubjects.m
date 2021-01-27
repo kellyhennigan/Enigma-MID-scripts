@@ -19,10 +19,14 @@ function subjects = getMIDSubjects(task)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% get subjects_list directory
-subjListFileName = fullfile(getBaseDir,'subjects_list_wheader.csv');
+if ~exist('task','var')
+    task='';
+end
 
-T=readtable(subjListFileName,'HeaderLines',0);
+% get subjects_list directory
+subjListFileName = fullfile(getBaseDir,'subjects_list.csv');
+
+T=readtable(subjListFileName);
 
 
 % define subject id cell array & vector of corresponding group indices
