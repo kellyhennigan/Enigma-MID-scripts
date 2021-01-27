@@ -101,3 +101,28 @@ for subject in subjects:
 print 'finished subject loop'
 
 
+
+# 3dDeconvolve -jobs 2 -input \
+# func_proc/pp_mid_tlrc.nii.gz \
+# -concat /home/span/rvta/mid_cuefmri_controls/scripts/mid_runindices_wEnd.1D \
+# -censor func_proc/mid_censor.1D \
+# -num_stimts 14 \
+# -polort 2 \
+# -dmbase -xjpeg /home/span/rvta/mid_cuefmri_controls/data/results_mid/Xmat \
+# -stim_file 1 "func_proc/mid_vr.1D[1]" -stim_base 1 -stim_label 1 roll \
+# -stim_file 2 "func_proc/mid_vr.1D[2]" -stim_base 2 -stim_label 2 pitch \
+# -stim_file 3 "func_proc/mid_vr.1D[3]" -stim_base 3 -stim_label 3 yaw \
+# -stim_file 4 "func_proc/mid_vr.1D[4]" -stim_base 4 -stim_label 4 dS \
+# -stim_file 5 "func_proc/mid_vr.1D[5]" -stim_base 5 -stim_label 5 dL \
+# -stim_file 6 "func_proc/mid_vr.1D[6]" -stim_base 6 -stim_label 6 dP \
+# -stim_file 7 func_proc/mid_csf_ts.1D -stim_base 7 -stim_label 7 csf \
+# -stim_file 8 func_proc/mid_wm_ts.1D -stim_base 8 -stim_label 8 wm \
+# -stim_file 9 regs/ant_midc.1D -stim_label 9 ant \
+# -stim_file 10 regs/out_midc.1D -stim_label 10 out \
+# -stim_file 11 regs/gvn_ant_midc.1D -stim_label 11 gvnant \
+# -stim_file 12 regs/lvn_ant_midc.1D -stim_label 12 lvnant \
+# -stim_file 13 regs/gvn_out_midc.1D -stim_label 13 gvnout \
+# -stim_file 14 regs/nvl_out_midc.1D -stim_label 14 nvlout \
+# -xout -tout -rout -bucket /home/span/rvta/mid_cuefmri_controls/data/results_mid/jn160403_glm \
+# -cbucket /home/span/rvta/mid_cuefmri_controls/data/results_mid/jn160403_glm_B
+
