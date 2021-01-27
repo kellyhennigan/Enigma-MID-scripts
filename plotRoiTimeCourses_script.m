@@ -23,7 +23,7 @@ path(path,genpath(scriptsDir)); % add scripts dir to matlab search path
 
 
 
-subjects = {'subj002','subj003'};
+subjects = getMIDSubjects();
 
 
 % timecourse directory
@@ -54,22 +54,21 @@ xt = t; %  xticks on the plotted x axis
 % trial timecourses minus gain0 trial timecourses
 
 plotStims = {'gain0 gain1 gain5';
-    'gain5-gain0';
     'gainwin gainmiss';
     'loss0 loss1 loss5';
     'loss5-loss0';
-    'losswin lossmiss'};
+    'losswin lossmiss';
+    'gain5-gain0 loss5-loss0'};
 
 
 % must have the same # of rows as plotStims; this will be used for the
 % outfile names. It should be a desription of what is being plotted as
 % determined by plotStims entries.
 plotStimStrs = {'gain trials';
-    'gain5-gain0 trials';
     'gain trials by outcome';
     'loss trials';
-    'loss5-loss0 trials';
-    'loss trials by outcome'};
+    'loss trials by outcome'; 
+    'gain-nongain & loss-nonloss trials'};
 
 
 
