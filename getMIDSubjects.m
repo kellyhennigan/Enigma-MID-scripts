@@ -7,8 +7,6 @@ function subjects = getMIDSubjects(task)
 % data folder that has a list of the subject ids and a group index (0 for
 % controls, 1 for patients).
 
-% INPUT:
-%  task (optional) - task name to return subjects for (default is '')
 
 % OUTPUT:
 %   subjects - cell array of subject id strings for this experiment
@@ -21,14 +19,10 @@ function subjects = getMIDSubjects(task)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-if ~exist('task','var')
-    task = '';
-end
-
 % get subjects_list directory
-subjListFileName = fullfile(getBaseDir,'subjects_list.csv');
+subjListFileName = fullfile(getBaseDir,'subjects_list_wheader.csv');
 
-T=readtable(subjListFileName);
+T=readtable(subjListFileName,'HeaderLines',0);
 
 
 % define subject id cell array & vector of corresponding group indices
