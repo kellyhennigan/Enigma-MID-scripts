@@ -1,6 +1,6 @@
-function subjects = getMIDSubjects(task)
+function subjects = getMIDSubjects()
 % -------------------------------------------------------------------------
-% subjects = getMIDSubjects()
+% subjects = getMIDSubjects(task)
 
 % usage: returns cell array with subject id strings for this experiment.
 % NOTE: this assumes that there is a file named 'subjects' within the exp
@@ -24,31 +24,30 @@ if ~exist('task','var')
 end
 
 % get subjects_list directory
-subjListFileName = fullfile(getBaseDir,'subjects_list.csv');
+% subjListFileName = fullfile(getBaseDir,'subjects_list.csv');
 
-T=readtable(subjListFileName);
+% read in subjects list
+% T=readtable(subjListFileName);
 
+% get subjects_list directory
+subjListFileName = fullfile(getBaseDir,'subjects.txt');
+
+% read in subjects list
+T=readtable(subjListFileName,'ReadVariableNames',0);
 
 % define subject id cell array & vector of corresponding group indices
 subjects = table2array(T(:,1));
 
 
-% if task is defined, return only good subjects for that task
-if ~isempty(task)
-    
-    taskindex = find(strcmpi(task,T.Properties.VariableNames));
-    
-    if isempty(taskindex)
-        
-        fprintf(['\ntask name ' task ' not recognized;\n returning all subjects...\n'])
-        
-    else
-        
-        subjects(table2array(T(:,taskindex))==0)=[];
-        
-    end
-    
-end
+% % if task is defined, return only good subjects for that task
+% if ~isempty(task)
+%     taskindex = find(strcmpi(task,T.Properties.VariableNames));
+%     if isempty(taskindex)
+%         fprintf(['\ntask name ' task ' not recognized;\n returning all subjects...\n'])
+%     else
+%         subjects(table2array(T(:,taskindex))==0)=[];
+%     end
+% end
 
 
 end % function
