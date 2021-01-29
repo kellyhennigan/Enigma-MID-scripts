@@ -221,9 +221,8 @@ Saves out VOI timecourses (as csv files) to directory **data/timecourses_mid/** 
 
 Here's an example timecourse plot showing gain 0, gain 1, and gain 5 trials in the nucleus accumbens (NAcc) in our sample of 42 controls:
 
-<p align="center">
-  <img width="665" height="500" src="https://github-com.laneproxy.stanford.edu/kellyhennigan/SPANLab-MID-scripts/blob/master/repo_figs/nacc_gain%20trials.png">
-</p>
+(repo_figs/nacc_gain trials.png)
+
 
 You can also plot an VOI timecourse for a given condition by subject with this script: 
 ```
