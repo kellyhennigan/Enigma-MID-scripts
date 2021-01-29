@@ -219,9 +219,22 @@ to save out and plot VOI timecourses for events of interest.
 #### output 
 Saves out VOI timecourses (as csv files) to directory **data/timecourses_mid/** and saves out figures to **figures/timecourses_mid/**.
 
-Here's an example timecourse plot showing gain 0, gain 1, and gain 5 trials in the nucleus accumbens (NAcc) in our sample of 42 controls:
+Here's are some example timecourse plots for this sample of 42 controls: 
 
+NAcc is parametrically modulated by gain amount (i.e., activation for $5 > $1 > $0):
 ![](repo_figs/nacc_gain_trials.png)
+
+
+...but is less sensitive to gain vs nongain outcomes: 
+![](repo_figs/nacc_gain_trials_by_outcome.png)
+
+
+On the other hand, MPFC cares less about gain anticipation amount: 
+![](repo_figs/mpfc_gain_trials.png)
+
+
+But MPFC differentiates by outcomes (e.g., gain vs nongain outcome):
+![](repo_figs/mpfc_gain_trials_by_outcome.png)
 
 
 You can also plot an VOI timecourse for a given condition by subject with this script: 
