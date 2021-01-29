@@ -197,7 +197,7 @@ saves out the following files to directory **data/results_mid**:
 * subjid_glm.xmat.1D 	# file containing the 
 To check out glm results, open these files in afni as an overlay (with, e.g., TT_N27.nii as underlay). You can also get info about these files using afni's 3dinfo command, e.g., from the terminal command line, `3dinfo -verb subjid_glm_B+tlrc`.
 
-Once you have those files, cd to the **results_mid** directory, and open the afni viewer (type "afni") in the terminal; load the anatomical template, TT_N27.nii as the underlay (you may need to add a copy of that nifti file into the results_mid directory), and load a "subjid_glm+tlrc" file as the overlay. You can change which stat map you are viewing as the overlay by clicking on the "Olay" dropdown menu within Afni's viewer window. Poke around. Here's what subj002's gain vs no-gain anticipation t-statistic map looks like: 
+Once you have those files, cd to the **results_mid** directory, and open the afni viewer (type "afni") in the terminal; load the anatomical template, TT_N27.nii as the underlay (you may need to add a copy of that nifti file into the results_mid directory), and load a "subjid_glm+tlrc" file as the overlay. You can change which stat map you are viewing as the overlay by clicking on the "Olay" dropdown menu within Afni's viewer window. Poke around. Here's what a subject's gain vs no-gain anticipation t-statistic map looks like: 
 
 <p align="center">
   <img width="332" height="302" src="https://github.com/kellyhennigan/MID_processing_example/blob/master/subj002_gvn_y12.jpg">
@@ -217,12 +217,12 @@ plotRoiTimeCourses_script
 to save out and plot VOI timecourses for events of interest. 
 
 #### output 
-Saves out VOI timecourses (as csv files) to directory **data/timecourses_cue/** and saves out figures to **figures/timecourses_mid/**.
+Saves out VOI timecourses (as csv files) to directory **data/timecourses_mid/** and saves out figures to **figures/timecourses_mid/**.
 
-Here's an example timecourse plot showing gain 0, gain 1, and gain 5 trials in the nucleus accumbens (NAcc) in a sample of 42 controls:
+Here's an example timecourse plot showing gain 0, gain 1, and gain 5 trials in the nucleus accumbens (NAcc) in our sample of 42 controls:
 
 <p align="center">
-  <img width="665" height="500" src="https://github.com/kellyhennigan/MID_processing_example/blob/master/nacc_desai_gain_trials_controls.png">
+  <img width="665" height="500" src="https://github-com.laneproxy.stanford.edu/kellyhennigan/SPANLab-MID-scripts/blob/master/repo_figs/nacc_gain%20trials.png">
 </p>
 
 You can also plot an VOI timecourse for a given condition by subject with this script: 
