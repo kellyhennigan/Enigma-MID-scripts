@@ -254,5 +254,17 @@ to save out a brain map for gain versus no gain anticipation.
 #### output 
 Saves out group maps to the directory, 'results_mid'. 
 
+If you cd to the results_mid directory and open afni, you can then view the group maps as an overlay on an anatomical underlay. 
+
+This can show, for example, that the striatum (including NAcc) is activated for gain vs nongain anticpation (i.e., "Zgvnant"): 
+![](repo_figs/gvnant_y10.png)
+
+![](repo_figs/gvnant_z0.png)
+
+And mpfc is activated for gain vs nogain outcomes (i.e., "Zgvnout"):
+![](repo_figs/gvnout_x1.png)
+
+![](repo_figs/gvnout_z0.png)
+
 
 
