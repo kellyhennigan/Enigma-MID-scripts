@@ -112,6 +112,7 @@ for i=1:numel(subjects)
     motion1=mot(:,2); motion2=mot(:,3); motion3=mot(:,4);
     motion4=mot(:,5); motion5=mot(:,6); motion6=mot(:,7);
     
+    Xnuisance=table(csf,wm,motion1,motion2,motion3,motion4,motion5,motion6);
     
     baseregs=modelBaseline(nVolsPerRun,2);
     npolybase1_run1=baseregs(:,1);
@@ -122,9 +123,15 @@ for i=1:numel(subjects)
     npolybase3_run2=baseregs(:,6);
     
     Xbase=table(npolybase1_run1,npolybase2_run1,npolybase3_run1,...
-        npolybase1_run2,npolybase2_run2,npolybase3_run2,...
-        csf,wm,motion1,motion2,motion3,motion4,motion5,motion6);
+        npolybase1_run2,npolybase2_run2,npolybase3_run2);
     
-    writetable(Xbase,'baseline_nuisance_regs_halfpipeformat.txt','delimiter','\t')
+    % save out baseline and nuisance regressors
+    writetable(Xnuisance,'nuisance_regs_halfpipeformat.txt','delimiter','\t')
+    writetable(Xbase,'baseline_regs_halfpipeformat.txt','delimiter','\t')
+    
+    % combine and save them out into 1 file
+    Xbase_nuisance=[Xbase Xnuisance]; 
+    
+    writetable(Xbase_nuisance,'baseline_nuisance_regs_halfpipeformat.txt','delimiter','\t')
     
 end % subjects
