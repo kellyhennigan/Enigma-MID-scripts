@@ -36,9 +36,9 @@ def getsubs(task='mid'):
 		for lines in csv_reader:
 			subjects.append(lines[0])
 			mid_idx.append(lines[1])
-	    	
+
 	if task=='mid':     	
-	
+
 		# if an entry in the "mid" column is 0, that means this subject 
 		# should be omitted from mid analyses. Get an index of any subjects to exclude.
 		omit_idx=[i for i, e in enumerate(mid_idx) if e == '0']
@@ -52,9 +52,9 @@ def getsubs(task='mid'):
 
 
 
-#if __name__ == "__main__":
-#	subjects,gi = getsubs(sys.argv[1])
-#	print subjects
+if __name__ == "__main__":
+	subjects = getsubs(sys.argv[1])
+	print ' '.join(subjects)
 #	print gi
 
 

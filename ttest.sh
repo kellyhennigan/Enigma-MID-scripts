@@ -15,7 +15,9 @@ dataDir=$mainDir/data
 # get list of subject IDs that should be included in the group maps
 # note: if a subject id in this list doesn't have a glm file (output of glm_mid.py), 
 # then this script will error. 
-subjects=$(cat ${mainDir}/subjects.txt)
+#subjects=$(cat ${mainDir}/subjects.txt)
+subjects=$(python getMIDSubjects.py 'mid')
+
 echo -e "here's the list of subjects to be included in group maps:\n $subjects"
 
 # to do: print out the number of subjects (nice for the experimenter to see)
@@ -60,7 +62,7 @@ do
 	
 	# construct 3dttest command
 	cmd="3dttest++ -prefix ${outname} -mask ${maskfile} -toz -setA "
-	for subj in ${subjects};
+	for subj in $subjects;
 	do
 		subjid=$(echo $subj | tr -d '\r')
 		#echo ${subjid}
