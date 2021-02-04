@@ -78,60 +78,63 @@ for i=1:numel(subjects)
     
     writetable(T,'regs_halfpipeformat.txt','delimiter','\t')
     
-end % subjects
-
-
-%% also, save out a regs file that contains baseline and nuisance regressors:
-
-% linear and quadratic drift
-% 6 rigid-body motion estimates
-% csf and wm time series
-
-nVolsPerRun=[256 292]; % number of volumes in pre-processed MID data
-
-
-% filepaths to csf and wm time series & head motion estimates
-csffile=fullfile(dataDir,'%s','func_proc','mid_csf_ts.1D');
-wmfile=fullfile(dataDir,'%s','func_proc','mid_wm_ts.1D');
-motfile=fullfile(dataDir,'%s','func_proc','mid_vr.1D');
-
-for i=1:numel(subjects)
-    
-    subject=subjects{i};
-    
-    % go to this subject's regs directory
-    regDir=fullfile(dataDir,subjects{i},'regs');
-    cd(regDir);
-    
-    % load csf and wm time series
-    csf=dlmread(sprintf(csffile,subject));
-    wm=dlmread(sprintf(wmfile,subject));
-    
-    % load head motion estimates
-    mot=dlmread(sprintf(motfile,subject));
-    motion1=mot(:,2); motion2=mot(:,3); motion3=mot(:,4);
-    motion4=mot(:,5); motion5=mot(:,6); motion6=mot(:,7);
-    
-    Xnuisance=table(csf,wm,motion1,motion2,motion3,motion4,motion5,motion6);
-    
-    baseregs=modelBaseline(nVolsPerRun,2);
-    npolybase1_run1=baseregs(:,1);
-    npolybase2_run1=baseregs(:,2);
-    npolybase3_run1=baseregs(:,3);
-    npolybase1_run2=baseregs(:,4);
-    npolybase2_run2=baseregs(:,5);
-    npolybase3_run2=baseregs(:,6);
-    
-    Xbase=table(npolybase1_run1,npolybase2_run1,npolybase3_run1,...
-        npolybase1_run2,npolybase2_run2,npolybase3_run2);
-    
-    % save out baseline and nuisance regressors
-    writetable(Xnuisance,'nuisance_regs_halfpipeformat.txt','delimiter','\t')
-    writetable(Xbase,'baseline_regs_halfpipeformat.txt','delimiter','\t')
-    
-    % combine and save them out into 1 file
-    Xbase_nuisance=[Xbase Xnuisance]; 
-    
-    writetable(Xbase_nuisance,'baseline_nuisance_regs_halfpipeformat.txt','delimiter','\t')
+    names=conds;
+    save('regs_halfpipeformat.mat','names','onsets','durations');
     
 end % subjects
+
+
+% %% also, save out a regs file that contains baseline and nuisance regressors:
+% 
+% % linear and quadratic drift
+% % 6 rigid-body motion estimates
+% % csf and wm time series
+% 
+% nVolsPerRun=[256 292]; % number of volumes in pre-processed MID data
+% 
+% 
+% % filepaths to csf and wm time series & head motion estimates
+% csffile=fullfile(dataDir,'%s','func_proc','mid_csf_ts.1D');
+% wmfile=fullfile(dataDir,'%s','func_proc','mid_wm_ts.1D');
+% motfile=fullfile(dataDir,'%s','func_proc','mid_vr.1D');
+% 
+% for i=1:numel(subjects)
+%     
+%     subject=subjects{i};
+%     
+%     % go to this subject's regs directory
+%     regDir=fullfile(dataDir,subjects{i},'regs');
+%     cd(regDir);
+%     
+%     % load csf and wm time series
+%     csf=dlmread(sprintf(csffile,subject));
+%     wm=dlmread(sprintf(wmfile,subject));
+%     
+%     % load head motion estimates
+%     mot=dlmread(sprintf(motfile,subject));
+%     motion1=mot(:,2); motion2=mot(:,3); motion3=mot(:,4);
+%     motion4=mot(:,5); motion5=mot(:,6); motion6=mot(:,7);
+%     
+%     Xnuisance=table(csf,wm,motion1,motion2,motion3,motion4,motion5,motion6);
+%     
+%     baseregs=modelBaseline(nVolsPerRun,2);
+%     npolybase1_run1=baseregs(:,1);
+%     npolybase2_run1=baseregs(:,2);
+%     npolybase3_run1=baseregs(:,3);
+%     npolybase1_run2=baseregs(:,4);
+%     npolybase2_run2=baseregs(:,5);
+%     npolybase3_run2=baseregs(:,6);
+%     
+%     Xbase=table(npolybase1_run1,npolybase2_run1,npolybase3_run1,...
+%         npolybase1_run2,npolybase2_run2,npolybase3_run2);
+%     
+%     % save out baseline and nuisance regressors
+%     writetable(Xnuisance,'nuisance_regs_halfpipeformat.txt','delimiter','\t')
+%     writetable(Xbase,'baseline_regs_halfpipeformat.txt','delimiter','\t')
+%     
+%     % combine and save them out into 1 file
+%     Xbase_nuisance=[Xbase Xnuisance]; 
+%     
+%     writetable(Xbase_nuisance,'baseline_nuisance_regs_halfpipeformat.txt','delimiter','\t')
+%     
+% end % subjects
