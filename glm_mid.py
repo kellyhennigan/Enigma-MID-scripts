@@ -6,13 +6,11 @@ import os,sys
 ##################### fit glm using 3dDeconvolve #####################################################################
 # EDIT AS NEEDED:
 
-scripts_dir=os.getcwd()
-os.chdir('../')
-main_dir=os.getcwd()
-data_dir=main_dir+'/data'
-os.chdir(scripts_dir)
+# get path for main project directory (assumes this is 1 directory up)
+main_dir=os.path.abspath('..')
 
-#data_dir = os.path.join(os.path.expanduser('~'),'cueexp','data')
+data_dir=main_dir+'/data'
+
 
 # pre-processed functional data to analyze
 func_dir = 'func_proc'  	# relative to subject-specific directory
