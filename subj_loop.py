@@ -87,7 +87,7 @@ def main():
 	subjects = whichSubs()
 
 
-	os.chdir(data_dir+subjects[0]) 		# cd to first subject's dir
+	os.chdir(data_dir+'/'+subjects[0]) 		# cd to first subject's dir
 	print('Current working directory: '+os.getcwd())
 	
 	cmd_list = getSubCommands() 			# have user input commands to perform
