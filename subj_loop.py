@@ -65,7 +65,7 @@ def getSubCommands():
 def performSubCommands(data_dir,subjects,cmd_list):
 	for subject in subjects: 		# now loop through subjects
 		print('WORKING ON SUBJECT '+subject)
-		os.chdir(data_dir+'/subjects/'+subject) # cd to subjects dir
+		os.chdir(data_dir+'/'+subject) # cd to subjects dir
 		for cmd in cmd_list[0:len(cmd_list)-1]:
 			if cmd.lower()[0:3]=='cd ':
 				os.chdir(cmd[3:])
