@@ -5,9 +5,9 @@ This repository has code for pre-processing and analyzing functional mri (fmri) 
 - 6 conditions (0,1,5 gain/loss trials)
 - 15 trials per condition, so 90 trials total
 - trial timing: 
-	* 0-2 s: mid presentation 
-	* 4.25-5 s: target "window" (i.e., target will appear sometime within this time window)
-	* 6-8 s: outcome presentation
+	* 0-2 s: cue presentation (+/- $0, $1, or $5 cue)
+	* 4.25-5 s: target window (i.e., target will appear sometime within this interval)
+	* 6-8 s: outcome presentation 
 	* intertrial interval (ITI) of either 2, 4 or 6 s, averaging 4 s across all trials
 
 
@@ -197,7 +197,7 @@ saves out the following files to directory **data/results_mid**:
 * subjid_glm.xmat.1D 	# file containing the 
 To check out glm results, open these files in afni as an overlay (with, e.g., TT_N27.nii as underlay). You can also get info about these files using afni's 3dinfo command, e.g., from the terminal command line, `3dinfo -verb subjid_glm_B+tlrc`.
 
-Once you have those files, cd to the **results_mid** directory, and open the afni viewer (type "afni") in the terminal; load the anatomical template, TT_N27.nii as the underlay (you may need to add a copy of that nifti file into the results_mid directory), and load a "subjid_glm+tlrc" file as the overlay. You can change which stat map you are viewing as the overlay by clicking on the "Olay" dropdown menu within Afni's viewer window. Poke around. Here's what a subject's gain vs no-gain anticipation t-statistic map looks like: 
+Once you have those files, cd to the **results_mid** directory, and open the afni viewer (type "afni") in the terminal; load the anatomical template, TT_N27.nii as the underlay (you may need to add a copy of that nifti file into the results_mid directory), and load a "subjid_glm+tlrc" file as the overlay. You can change which stat map you are viewing as the overlay by clicking on the "Olay" dropdown menu within Afni's viewer window. Poke around. Here's what a single subject's gain vs no-gain anticipation t-statistic map looks like: 
 
 <p align="center">
   <img width="332" height="302" src="https://github.com/kellyhennigan/MID_processing_example/blob/master/subj002_gvn_y12.jpg">
@@ -219,13 +219,13 @@ to save out and plot VOI timecourses for events of interest.
 #### output 
 Saves out VOI timecourses (as csv files) to directory **data/timecourses_mid/** and saves out figures to **figures/timecourses_mid/**.
 
-Here's are some example timecourse plots for this sample of 42 controls: 
+Here are some example timecourse plots for this sample of 42 controls; note that error bars show standard error of the mean (SEM): 
 
-NAcc is parametrically modulated by gain amount (i.e., activation for $5 > $1 > $0):
+NAcc is parametrically modulated by gain amount (i.e., activation for $5 > $1 > $0) during the anticipation phase (i.e., t=4-6 seconds after trial onset):
 ![](repo_figs/nacc_gain_trials.png)
 
 
-...but is less sensitive to gain vs nongain outcomes: 
+...but is less sensitive to gain vs nongain outcomes (i.e., t=12 seconds after trial onset): 
 ![](repo_figs/nacc_gain_trials_by_outcome.png)
 
 
@@ -241,15 +241,16 @@ You can also plot an VOI timecourse for a given condition by subject with this s
 ```
 plotRoiTimeCourses_subject_script
 ```
-This is mainly for troubleshooting purposes; it helps to see if the timecourses look funky for a particular subject. 
+which is mainly for troubleshooting purposes; it helps to see if the timecourses look funky for a particular subject. 
 
 
 ### Group level brain maps
-Once you have GLM estimates for every subject in the sample, you can generate group brain maps. Here's an example command for doing that: 
+Once you have GLM estimates for every subject, generate group brain maps with afni's 3dttest++ command using this bash script:
 ```
-3dttest++ 
+./ttest.sh
 ```
-to save out a brain map for gain versus no gain anticipation. 
+
+
 
 #### output 
 Saves out group maps to the directory, 'results_mid'. 
