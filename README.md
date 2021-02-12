@@ -268,4 +268,7 @@ And mpfc is activated for gain vs nogain outcomes (i.e., "Zgvnout"):
 ![](repo_figs/gvnout_z0.png)
 
 
-
+### TO DO: 
+- add motion plot QC script
+- convert regs script from c-shell to bash
+- convert glm script from python to bash? 
