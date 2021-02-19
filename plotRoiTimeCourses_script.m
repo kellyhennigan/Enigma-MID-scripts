@@ -23,7 +23,7 @@ path(path,genpath(scriptsDir)); % add scripts dir to matlab search path
 
 
 
-subjects = getMIDSubjects();
+subjects = getMIDSubjects('mid');
 
 
 % timecourse directory

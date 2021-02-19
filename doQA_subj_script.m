@@ -18,8 +18,8 @@ dataDir = [mainDir '/data'];
 path(path,genpath(scriptsDir)); % add scripts dir to matlab search path
 
 
-% subjects = getMIDSubjects();
-subjects={'ab071412','bk032113','dp092612','na060213','pw061113','tr101312'};
+subjects = getMIDSubjects();
+% subjects={'ab071412','bk032113','dp092612','na060213','pw061113','tr101312'};
 
 savePlots = 1; % 1 to save plots, otherwise 0
 
@@ -32,7 +32,7 @@ task='mid';
 mp_file = [dataDir '/%s/func_proc/' task '_vr.1D']; % motion param file where %s is task
 
 en_thresh = .5;
-percent_bad_thresh = 3;
+percent_bad_thresh = 5;
 
 roi_str = 'nacc';
 roits_file = [dataDir '/%s/func_proc/' task '_' roi_str '_ts.1D']; % roi time series file to plot where %s is task

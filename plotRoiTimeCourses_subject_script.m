@@ -21,7 +21,7 @@ figDir = [mainDir '/figures'];
 % add scripts to matlab's search path
 path(path,genpath(scriptsDir)); % add scripts dir to matlab search path
 
-subjects = getMIDSubjects();
+subjects = getMIDSubjects('mid');
 
 
 % timecourse directory
