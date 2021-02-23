@@ -17,7 +17,13 @@ path(path,genpath(scriptsDir)); % add scripts dir to matlab search path
 
 subjects = getMIDSubjects('mid');
 
-runvols=[256 292];  % # of volumes in each run
+
+if ~isempty(strfind(dataDir,'agebias'))
+    runvols=[264 283];  % # of volumes for split half in agebias dataset
+else
+    runvols=[256 292];  % # of volumes in each run
+end
+
 
 task='mid';
 
