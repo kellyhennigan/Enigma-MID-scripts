@@ -12,9 +12,9 @@ function baseDir = getBaseDir()
 cName=getComputerName;
 
 if strcmp(cName,'uncus')               % uncus server
-    baseDir = '/Volumes/pegasus/mid_cuefmri_controls';
+    baseDir = '/Volumes/pegasus/cuefmri';
 elseif strcmp(cName,'vta')               % vta server
-    baseDir = '/home/span/rvta/mid_meta/mid_cuefmri_controls';
+    baseDir = '/home/span/rvta/mid_meta/cuefmri';
 else                                   % assume its my laptop
-    baseDir = '/Users/kelly/mid_cuefmri_controls';
+    baseDir = '/Users/kelly/mid_meta/cuefmri';
 end

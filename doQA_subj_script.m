@@ -37,8 +37,8 @@ percent_bad_thresh = 5;
 roi_str = 'nacc';
 roits_file = [dataDir '/%s/func_proc/' task '_' roi_str '_ts.1D']; % roi time series file to plot where %s is task
 
-
-
+% note the index of the first volume of run 2
+run2vol1idx=257;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% do it
@@ -69,6 +69,7 @@ for s = 1:numel(subjects)
         max_en(s,1)=nan; max_TR(s,1)=nan; nBad(s,1)=nan; omit_idx(s,1)=nan;
     else
         
+       
         % plot motion params & save if desired
         fig = plotMotionParams(mp);
         if savePlots
@@ -80,6 +81,9 @@ for s = 1:numel(subjects)
         % calculate euclidean norm (head motion distance roughly in mm units)
         en = [0;sqrt(sum(diff(mp).^2,2))];
         
+        if exist('run2vol1idx','var')
+            en(run2vol1idx)=0; % there's no "motion" in the 1st vol of the 2nd run; correctly assign motion to 0
+        end
         
         % determine this subject's max movement
         [max_en(s,1),max_TR(s,1)]=max(en);

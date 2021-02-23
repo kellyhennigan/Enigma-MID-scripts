@@ -35,7 +35,7 @@ tcPath = fullfile(dataDir,tcDir);
 roiNames = {'nacc','mpfc','ins'};
 
 
-nTRs = 12; % # of TRs to plot
+nTRs = 10; % # of TRs to plot
 TR = 2; % TR (in units of seconds)
 t = 0:TR:TR*(nTRs-1); % time points (in seconds) to plot
 xt = t; %  xticks on the plotted x axis

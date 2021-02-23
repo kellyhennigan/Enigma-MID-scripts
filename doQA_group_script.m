@@ -32,7 +32,7 @@ task='mid';
 mp_file = [dataDir '/%s/func_proc/' task '_vr.1D']; % motion param file where %s is task
 
 en_thresh = .5;
-percent_bad_thresh = 5;
+percent_bad_thresh = 3;
 
 run2vol1idx=257;
 
