@@ -84,10 +84,10 @@ outStimNames = {'gain0','gain1','gain5','gainwin','gainmiss',...
 roiDir = fullfile(mainDir,'templates');
 
 % get list of rois to potentially process
-roiNames = {'nacc_desai_func','mpfc_func','ins_desai_func'}; 
+roiNames = {'nacc_desai_func','mpfc_func','ins_desai_func','v1_func','motorcortexL_func','acing_func','caudate_func'}; 
 
 % list corresponding to roiNames to use in outfile name
-outRoiNames = {'nacc','mpfc','ins'}; 
+outRoiNames = {'nacc','mpfc','ins','v1','motorcortexL','acing','caudate'}; 
 
 
 

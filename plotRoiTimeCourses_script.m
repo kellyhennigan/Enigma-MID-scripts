@@ -32,7 +32,7 @@ tcPath = fullfile(dataDir,tcDir);
 
 
 % which rois to process?
-roiNames = {'nacc','mpfc','ins'};
+roiNames = {'nacc','mpfc','ins','v1','motorcortexL','acing','caudate'}; 
 
 
 nTRs = 10; % # of TRs to plot
