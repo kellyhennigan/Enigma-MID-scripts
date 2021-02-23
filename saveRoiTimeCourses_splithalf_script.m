@@ -141,7 +141,7 @@ for half=1:2
         
         
         % get stim onset times
-        onsetTRs = cellfun(@(x) find(dlmread(fullfile(sprintf(stimDir,subject,num2str(half)),x))), stimFiles, 'uniformoutput',0);
+        onsetTRs = cellfun(@(x) find(dlmread(fullfile(sprintf(stimDir,subject),sprintf(x,num2str(half))))), stimFiles, 'uniformoutput',0);
         
         
         for j=1:numel(rois)
