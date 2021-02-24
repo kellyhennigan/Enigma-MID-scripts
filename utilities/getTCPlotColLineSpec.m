@@ -38,11 +38,16 @@ for i=1:numel(stims)
         
         % add/edit as desired!!!
         
-        case {'gain5','gain5-gain0'}
+        case 'gain5'
             
             colors{i}=  [37,52,148]./255; % dark blue
             lspec{i} = '-';
+       
+        case 'gain5-gain0'
             
+            colors{i}=[5,112,176]./255; % blue
+            lspec{i} = '-';
+     
         case 'gain1'
             
             colors{i}=[5,112,176]./255; % blue
@@ -53,11 +58,16 @@ for i=1:numel(stims)
             colors{i}= [116,169,207]./255; % light blue
             lspec{i} = '-';
             
-        case {'loss5','loss5-loss0'}
+        case 'loss5'
             
-            colors{i}=  [103,0,131]./255; % dark red
+            colors{i}=  [103,0,13]./255; % dark red
             lspec{i} = '-';
+      
+        case 'loss5-loss0'
             
+            colors{i}=[203,24,29]./255; % red
+            lspec{i} = '-';
+      
         case 'loss1'
             
             colors{i}=[203,24,29]./255; % red
