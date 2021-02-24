@@ -8,10 +8,6 @@
 ########################## DEFINE VARIABLES #############################
 #########################################################################
 
-cd ..
-mainDir=$(pwd)
-dataDir=$mainDir/data
-
 # get list of subject IDs that should be included in the group maps
 # note: if a subject id in this list doesn't have a glm file (output of glm_mid.py), 
 # then this script will error. 
@@ -19,6 +15,10 @@ dataDir=$mainDir/data
 subjects=$(python getMIDSubjects.py 'mid')
 
 echo -e "here's the list of subjects to be included in group maps:\n $subjects"
+
+cd ..
+mainDir=$(pwd)
+dataDir=$mainDir/data
 
 # to do: print out the number of subjects (nice for the experimenter to see)
 
