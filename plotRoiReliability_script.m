@@ -141,7 +141,7 @@ for j = 1:numel(roiNames)
         % below, it will plot asterisks on the figure.
         se = []; pvals = []; 
         plotToScreen=0; % dont plot to screen
-        [fig,leg]=plotNiceLines(1:nTRs,r,se,cols,lspec,pvals,conds,xlab,ylab,figtitle,[],plotToScreen);
+        [fig,leg]=plotNiceLines(1:nTRs,r,se,cols,lspec,pvals,stims,xlab,ylab,figtitle,[],plotToScreen);
 
         ylim([-.6 .7])
         print(gcf,'-dpng','-r300',savePath);
