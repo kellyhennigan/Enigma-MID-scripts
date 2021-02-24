@@ -1,7 +1,6 @@
-function [fig,leg]=plotNiceLinesEBar(x,y,se,cols,pvals,lineLabels,xlab,ylab,figtitle,savePath)
-% [fig,leg] = plotNiceBars(d,dName,condNames,groupNames,cols,plotSig,savePath)
+function [fig,leg]=plotNiceLinesEBar(x,y,se,cols,pvals,lineLabels,xlab,ylab,figtitle,savePath,lspec)
 % -------------------------------------------------------------------------
-% usage: function to make nice line plots with shaded error;
+% usage: function to make nice line plots with error bars;
 %
 % INPUT:
 %   x - 1 x n vector of values of x-axis, e.g., seconds or TRs
@@ -15,6 +14,7 @@ function [fig,leg]=plotNiceLinesEBar(x,y,se,cols,pvals,lineLabels,xlab,ylab,figt
 %   figtitle - title for plot
 %   savePath - filepath to save out figure to; if not given, it won't be
 %      saved.
+%   lspec - matlab's lspec to determine what the lines ook like
 
 % OUTPUT:
 %   fig - figure handle
@@ -53,10 +53,12 @@ if notDefined('plotToScreen')
     plotToScreen = 1; % default is to plot to screen.
 end
 
-
 % this determines the type of line, e.g., '--' will plot dotted lines. 
 %  See matlab documentation for lspec to see more options.
-lspec='-';
+if notDefined('lspec')
+    lspec = repmat({'-'},size(y));
+end
+
 
 
 %%
@@ -72,7 +74,7 @@ set(gcf,'Color','w','InvertHardCopy','off','PaperPositionMode','auto');
 
 % plot lines
 for i=1:numel(y)
-    eh = errorbar(x,y{i},se{i},lspec,'color',cols{i},'linewidth',2);
+    eh = errorbar(x,y{i},se{i},lspec{i},'color',cols{i},'linewidth',2);
     eh.CapSize = 6; % determines error bar cap size; default is 6
 end
 

@@ -19,7 +19,7 @@ figDir = [mainDir '/figures'];
 
 
 % add scripts to matlab's search path
-path(path,genpath(scriptsDir)); % add scripts dir to matlab search path
+path(genpath(scriptsDir),path); % add scripts dir to matlab search path
 
 
 
@@ -33,7 +33,7 @@ tcPath = fullfile(dataDir,tcDir);
 
 % which rois to process?
 roiNames = {'nacc','mpfc','ins','v1','motorcortexL','acing','caudate'}; 
-
+roiNames = {'nacc'}
 
 nTRs = 10; % # of TRs to plot
 TR = 2; % TR (in units of seconds)
@@ -154,8 +154,8 @@ for r = 1:numel(roiNames)
         lineLabels = stims;
         
         % line colors & line specs
-        cols = getTCPlotColors(stims);
-      
+        [cols,lspec] = getTCPlotColLineSpec(stims);
+        
       
         % filepath, if saving
         savePath = [];
@@ -177,7 +177,7 @@ for r = 1:numel(roiNames)
         % below, it will plot asterisks on the figure.
         pvals = []; 
         
-        [fig,leg]=plotNiceLinesEBar(t,mean_tc,se_tc,cols,pvals,lineLabels,xlab,ylab,figtitle,savePath);
+        [fig,leg]=plotNiceLinesEBar(t,mean_tc,se_tc,cols,pvals,lineLabels,xlab,ylab,figtitle,savePath,lspec);
         
         
         fprintf('done.\n\n');

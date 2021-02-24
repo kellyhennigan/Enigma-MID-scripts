@@ -18,7 +18,7 @@ This repository has code for pre-processing and analyzing functional mri (fmri) 
 
 * [Python 2.7](https://www.python.org/)
 * [AFNI version 18.0.XX](https://afni.nimh.nih.gov/)  (NOTE: the version is important, because more recent versions of AFNI apparently don't have the 3dFourier command used in this pipeline)
-* [Matlab](https://www.mathworks.com/products/matlab.html) (used only for saving & plotting ROI timecourses)
+* [Matlab](https://www.mathworks.com/products/matlab.html) (currently used for saving & plotting VOI timecourses)
 
 
 
@@ -145,7 +145,13 @@ files saved out to directory **data/subjid/func_proc** are:
 
 ### QA check head motion & spikes 
 
-Now that we've estimated a subject's head motion, plot it to make sure it looks okay using afni's 1dplot command, e.g:  
+Now that we've estimated a subject's head motion, lets determine who (if any) from the sample should be excluded for bad motion. You can use these 2 matlab scripts to save out motion figures and to generate a list of which (if any) subjects to exclude based on a given threshold:
+```
+doQA_subj_script # saves out motion plots for each subject
+doQA_group_script # plots group-level motion stats
+```
+
+You can also use afni's 1dplot command from the terminal to check out subjects' motion on-the-fly, e.g:  
 ```
 1dplot mid_vr.1D[1..6] # plots all 6 displacement & rotation motion parameters 
 ```
@@ -153,11 +159,11 @@ or try:
 ```
 1dplot mid_enorm.1D # to plot a summary measure (euclidean norm) of volume-to-volume motion 
 ```
-In general, we consider "bad" motion to be anything greater than a euclidean norm value of 0.5-1, and we censor timepoints with bad motion from our analyses. We also then decide on a threshold of how many "bad" timepoints a subject can have before they are excluded from analysis for bad motion. A typical value for this would be, say, 1% of the data (i.e., subject's that have bad motion in 1% or more of their volumes for a given task would be excluded from analysis). 
+In general, we consider "bad" motion to be anything greater than a euclidean norm value of 0.5-1, and we censor timepoints with bad motion from our analyses. We also then decide on a threshold of how many "bad" timepoints a subject can have before they are excluded from analysis for bad motion. A typical value for this would be, say, 3% of the data (i.e., subject's that have bad motion in 3% or more of their volumes for a given task would be excluded from analysis). 
 
-You might also want to plot some ROI timeseries to make sure they look okay (e.g., no strange spikes that can't be explained by head motion):
+You might also want to plot some VOI timeseries to make sure they look okay (e.g., no strange spikes that can't be explained by head motion):
 ```
-1dplot mid_nacc_ts.1D # plot NAcc ROI timeseries
+1dplot mid_nacc_ts.1D # plot NAcc VOI timeseries
 ```
 
 

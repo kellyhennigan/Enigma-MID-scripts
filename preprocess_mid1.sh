@@ -66,7 +66,6 @@ dataDir=$mainDir/data
 
 # anatomical template in tlrc space
 t1_template=$mainDir/templates/TT_N27.nii # %s is data_dir
-func_template=$mainDir/templates/TT_N27_func_dim.nii # %s is data_dir
 
 
 # subject ids to process (assumes directory structure is dataDir/subjid)
