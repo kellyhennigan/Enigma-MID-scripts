@@ -86,6 +86,8 @@ for j = 1:numel(roiNames)
     f=1;
     for f = 1:nFigs
         
+        clear r rvals
+        
         % get the name & stims to plot for this figure
         stims = splitstring(plotStims{f});
         stimStr = plotStimStrs{f};
