@@ -73,10 +73,10 @@ nFigs=size(plotStims,1);
 
 
 % get ROI time courses
-r=1;
-for r = 1:numel(roiNames)
+j=1;
+for j = 1:numel(roiNames)
     
-    roiName = roiNames{r};
+    roiName = roiNames{j};
     
     inDir = fullfile(tcPath,roiName); % time courses dir for this ROI
     
