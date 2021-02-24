@@ -73,10 +73,10 @@ nFigs=size(plotStims,1);
 
 
 % get ROI time courses
-r=1;
-for r = 1:numel(roiNames)
+j=1;
+for j = 1:numel(roiNames)
     
-    roiName = roiNames{r};
+    roiName = roiNames{j};
     
     inDir = fullfile(tcPath,roiName); % time courses dir for this ROI
     
@@ -86,11 +86,11 @@ for r = 1:numel(roiNames)
     f=1;
     for f = 1:nFigs
         
+         clear r rvals
+         
         % get the name & stims to plot for this figure
         stims = splitstring(plotStims{f});
         stimStr = plotStimStrs{f};
-        
-        tc = {}; % time course cell array
         
         c=1;
         for c = 1:numel(stims)
@@ -100,14 +100,14 @@ for r = 1:numel(roiNames)
                 tc1=loadRoiTimeCourses(stimFile1,subjects,1:nTRs);
                 stimFile2 = fullfile(inDir,[stims{c} '_half2.csv']);
                 tc2=loadRoiTimeCourses(stimFile2,subjects,1:nTRs);
-              
+                
                 % take the derivative
-                   tc1=diff(tc1,1,2);
-                   tc2=diff(tc2,1,2);
-  
+                tc1=diff(tc1,1,2);
+                tc2=diff(tc2,1,2);
+                
                 % calculate the correlation btwn the 2 runs for each TR
                 r{c}=diag(corr(tc1,tc2));
-                rvals{c}= sprintf(['%s trials, TRs 1-%d: ' repmat('%.2f  ',1,nTRs)],stims{c},r{c});
+                rvals{c}= sprintf(['%s trials, TRs 1-%d: ' repmat('%.2f  ',1,nTRs-1)],stims{c},r{c});
                 
             
         end % stims
@@ -144,7 +144,7 @@ for r = 1:numel(roiNames)
         % below, it will plot asterisks on the figure.
         se = []; pvals = []; 
         plotToScreen=0; % dont plot to screen
-        [fig,leg]=plotNiceLines(1:nTRs-1,r,se,cols,lspec,pvals,conds,xlab,ylab,figtitle,[],plotToScreen);
+        [fig,leg]=plotNiceLines(1:nTRs-1,r,se,cols,lspec,pvals,stims,xlab,ylab,figtitle,[],plotToScreen);
 
         ylim([-.6 .7])
         print(gcf,'-dpng','-r300',savePath);

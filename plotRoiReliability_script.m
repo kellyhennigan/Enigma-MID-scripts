@@ -92,8 +92,6 @@ for j = 1:numel(roiNames)
         stims = splitstring(plotStims{f});
         stimStr = plotStimStrs{f};
         
-        tc = {}; % time course cell array
-        
         c=1;
         for c = 1:numel(stims)
             
