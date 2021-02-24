@@ -26,7 +26,7 @@ subjects = getMIDSubjects('mid');
 % ROIs
 % roiNames = {'VTA','ins_desai','mpfc','vstriatumR_clust','vstriatumL_clust','VTA_clust'};
 roiDir = fullfile(mainDir,'templates');
-roiNames = {'nacc_desai_func','mpfc_func','ins_desai_func','v1_func','motorcortexL_func','acing_func','caudate_func'}; 
+roiNames = {'nacc_desai','mpfc','ins_desai','v1','motorcortexL','acing','caudate'}; 
 
 
 % directory that contains glm results of interest
