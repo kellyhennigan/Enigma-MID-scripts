@@ -30,7 +30,7 @@ roiNames = {'nacc_desai_func','mpfc_func','ins_desai_func','v1_func','motorcorte
 
 
 % directory that contains glm results of interest
-resultsDir = fullfile(dataDir,['results_mid_afni']);
+resultsDir = fullfile(dataDir,['results_mid']);
 % resultsDir = fullfile(dataDir,['results_' task '_afni_reltest']);
 
      
