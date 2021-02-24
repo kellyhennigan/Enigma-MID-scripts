@@ -1,4 +1,4 @@
-function [fig,leg]=plotNiceLines(x,y,se,cols,pvals,lineLabels,xlab,ylab,figtitle,savePath,plotToScreen,lspec)
+function [fig,leg]=plotNiceLines(x,y,se,cols,lspec,pvals,lineLabels,xlab,ylab,figtitle,savePath,plotToScreen)
 % [fig,leg] = plotNiceBars(d,dName,condNames,groupNames,cols,plotSig,savePath)
 % -------------------------------------------------------------------------
 % usage: function to make nice line plots with shaded error;
