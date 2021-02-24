@@ -36,8 +36,12 @@ resultsDir = fullfile(dataDir,['results_mid']);
      
 %%% MAKE SURE THESE ARE THE CORRECT VOLUME INDICES!!!
 fileStr = 'glm_B+tlrc.HEAD'; % string identifying files w/single subject beta maps
-volIdx = [16,17,18,19]; % index of which volumes are the beta maps of interest (first vol=0, etc.)
 bNames = {'gvnant','lvnant','gvnout','nvlout'}; % bNames should correspond to volumes in index volIdx
+if strfind(mainDir,'agebias')
+    volIdx = [13,14,15,16]; % index of which volumes are the beta maps of interest (first vol=0, etc.)
+else
+    volIdx = [16,17,18,19]; % index of which volumes are the beta maps of interest (first vol=0, etc.)
+end
 
 
 % out file path
