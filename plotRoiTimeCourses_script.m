@@ -176,14 +176,16 @@ for r = 1:numel(roiNames)
         % point and get p-values. If you give p-values to the plot function
         % below, it will plot asterisks on the figure.
         pvals = []; 
-        
-        [fig,leg]=plotNiceLinesEBar(t,mean_tc,se_tc,cols,pvals,lineLabels,xlab,ylab,figtitle,savePath,lspec);
+        plotToScreen=0; % dont plot to screen
+        [fig,leg]=plotNiceLinesEBar(t,mean_tc,se_tc,cols,lspec,pvals,lineLabels,xlab,ylab,figtitle,savePath,plotToScreen);
         
         
         fprintf('done.\n\n');
         
         
     end % figures
+    
+    close all
     
 end %roiNames
 

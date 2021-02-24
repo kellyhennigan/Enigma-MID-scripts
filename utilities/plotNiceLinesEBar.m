@@ -1,4 +1,4 @@
-function [fig,leg]=plotNiceLinesEBar(x,y,se,cols,pvals,lineLabels,xlab,ylab,figtitle,savePath,lspec)
+function [fig,leg]=plotNiceLinesEBar(x,y,se,cols,lspec,pvals,lineLabels,xlab,ylab,figtitle,savePath,plotToScreen)
 % -------------------------------------------------------------------------
 % usage: function to make nice line plots with error bars;
 %
@@ -7,6 +7,7 @@ function [fig,leg]=plotNiceLinesEBar(x,y,se,cols,pvals,lineLabels,xlab,ylab,figt
 %   y - m x n matrix where each row of values will be plotted as a line
 %   se - standard error values corresponding to values in y
 %   cols - cell array of colors for plotting
+%   lspec - matlab's lspec to determine what the lines ook like
 %   pvals - 1 x n vector of p values from tests comparing values of lines;
 %       if given, '*'s will be plotted above lines for sig differences
 % 	lineLabels - cell array with names corresponding to each line
@@ -14,7 +15,8 @@ function [fig,leg]=plotNiceLinesEBar(x,y,se,cols,pvals,lineLabels,xlab,ylab,figt
 %   figtitle - title for plot
 %   savePath - filepath to save out figure to; if not given, it won't be
 %      saved.
-%   lspec - matlab's lspec to determine what the lines ook like
+%   plotToScreen - 1 to plot to screen, otherwise, 0 (default is 1)
+
 
 % OUTPUT:
 %   fig - figure handle
@@ -63,7 +65,12 @@ end
 
 %%
 
-fig=figure;
+if plotToScreen
+    fig=figure;
+else
+    fig = figure('Visible','off');
+end
+
 
 hold on
 ss = get(0,'Screensize'); % screen size
@@ -123,6 +130,8 @@ xlim([x(1) x(end)])
 if savePath
     print(gcf,'-dpng','-r300',savePath);
 end
+
+hold off
 
 fprintf('done.\n\n')
 
