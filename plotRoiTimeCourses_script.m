@@ -168,14 +168,16 @@ for r = 1:numel(roiNames)
         % you could add code here to do statistical testing at each time
         % point and get p-values. If you give p-values to the plot function
         % below, it will plot asterisks on the figure.
-        pvals = []; 
+        pvals = [];
         plotToScreen=0; % dont plot to screen
-       % [fig,leg]=plotNiceLinesEBar(t,mean_tc,se_tc,cols,lspec,pvals,stims,xlab,ylab,figtitle,savePath,plotToScreen);
-         [fig,leg]=plotNiceLinesEBar(1:nTRs,mean_tc,se_tc,cols,lspec,pvals,stims,xlab,ylab,figtitle,savePath,plotToScreen);
+        % [fig,leg]=plotNiceLinesEBar(t,mean_tc,se_tc,cols,lspec,pvals,stims,xlab,ylab,figtitle,savePath,plotToScreen);
+        [fig,leg]=plotNiceLinesEBar(1:nTRs,mean_tc,se_tc,cols,lspec,pvals,stims,xlab,ylab,figtitle,[],plotToScreen);
+        set(gca,'XTick',1:nTRs)
+        print(gcf,'-dpng','-r300',savePath);
         
         fprintf('done.\n\n');
         
-        set(gca,'XTick',1:nTRs)
+      
     end % figures
     
     close all
