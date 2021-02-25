@@ -101,6 +101,17 @@ for j = 1:numel(roiNames)
                 stimFile2 = fullfile(inDir,[stims{c} '_half2.csv']);
                 tc2=loadRoiTimeCourses(stimFile2,subjects,1:nTRs);
                 
+                % remove any subjects if they have nan values 
+                % (for example, if a subject had no missed loss trials in
+                % run 1, they would have nan values for that condition. NaN
+                % values mess up the correlation calculation, so take them
+                % out. 
+                if any(isnan(tc1)) || any(isnan(tc2))
+                    [nanidx1,~]=find(isnan(tc1)); [nanidx2,~]=find(isnan(tc2));
+                    nanidx=[unique(nanidx1) unique(nanidx2)];
+                    tc1(nanidx,:)=[]; tc2(nanidx,:)=[];
+                end
+                
                 % take the derivative
                 tc1=diff(tc1,1,2);
                 tc2=diff(tc2,1,2);
