@@ -170,8 +170,8 @@ for r = 1:numel(roiNames)
         % below, it will plot asterisks on the figure.
         pvals = []; 
         plotToScreen=0; % dont plot to screen
-        [fig,leg]=plotNiceLinesEBar(t,mean_tc,se_tc,cols,lspec,pvals,stims,xlab,ylab,figtitle,savePath,plotToScreen);
-        
+       % [fig,leg]=plotNiceLinesEBar(t,mean_tc,se_tc,cols,lspec,pvals,stims,xlab,ylab,figtitle,savePath,plotToScreen);
+         [fig,leg]=plotNiceLinesEBar(1:nTRs,mean_tc,se_tc,cols,lspec,pvals,stims,xlab,ylab,figtitle,savePath,plotToScreen);
         
         fprintf('done.\n\n');
         
