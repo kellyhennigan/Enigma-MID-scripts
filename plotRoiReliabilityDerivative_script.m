@@ -119,7 +119,7 @@ for j = 1:numel(roiNames)
         figtitle = [strrep(roiName,'_',' ') ' reliability for ' stimStr ];
         
         % x and y labels
-        xlab = 'TR derivative (TR_n - TR_n-1)';
+        xlab = 'TR derivative (TR_n_+_1 - TR_n)';
         ylab = 'split-half reliablity metric';
       
         % line colors & line specs

@@ -145,7 +145,7 @@ for r = 1:numel(roiNames)
         figtitle = [strrep(roiName,'_',' ') ' response derivative to ' stimStr ];
         
         % x and y labels
-        xlab = 'TR (s) derivative';
+        xlab = 'TR derivative (TR_n_+_1 - TR_n)';
         ylab = '%\Delta BOLD';
       
         

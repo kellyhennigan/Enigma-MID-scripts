@@ -143,7 +143,7 @@ for r = 1:numel(roiNames)
         figtitle = [strrep(roiName,'_',' ') ' response to ' stimStr ];
         
         % x and y labels
-        xlab = 'time (s)';
+        xlab = 'time (TRs)';
         ylab = '%\Delta BOLD';
         
         % line colors & line specs
@@ -175,7 +175,7 @@ for r = 1:numel(roiNames)
         
         fprintf('done.\n\n');
         
-        
+        set(gca,'XTick',1:nTRs)
     end % figures
     
     close all

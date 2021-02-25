@@ -143,6 +143,7 @@ for j = 1:numel(roiNames)
         plotToScreen=0; % dont plot to screen
         [fig,leg]=plotNiceLines(1:nTRs,r,se,cols,lspec,pvals,stims,xlab,ylab,figtitle,[],plotToScreen);
 
+        set(gca,'XTick',1:nTRs)
         ylim([-.6 .7])
         print(gcf,'-dpng','-r300',savePath);
            
