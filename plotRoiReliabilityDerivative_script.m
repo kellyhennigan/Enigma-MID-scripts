@@ -106,7 +106,7 @@ for j = 1:numel(roiNames)
                 % run 1, they would have nan values for that condition. NaN
                 % values mess up the correlation calculation, so take them
                 % out. 
-                if any(isnan(tc1)) || any(isnan(tc2))
+                if any(isnan(tc1(:))) || any(isnan(tc2(:)))
                     [nanidx1,~]=find(isnan(tc1)); [nanidx2,~]=find(isnan(tc2));
                     nanidx=[unique(nanidx1) unique(nanidx2)];
                     tc1(nanidx,:)=[]; tc2(nanidx,:)=[];
