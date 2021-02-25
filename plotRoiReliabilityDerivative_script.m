@@ -116,7 +116,7 @@ for j = 1:numel(roiNames)
           %% set up all plotting params
         
         % fig title
-        figtitle = [strrep(roiName,'_',' ') ' reliability for ' stimStr ];
+        figtitle = [strrep(roiName,'_',' ') ' reliability for derivative of ' stimStr ];
         
         % x and y labels
         xlab = 'TR derivative (TR_n_+_1 - TR_n)';
